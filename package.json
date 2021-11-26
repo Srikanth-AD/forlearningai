@@ -1,12 +1,9 @@
 {
-  "name": "gatsby-starter-blog",
+  "name": "forlearningai",
   "private": true,
-  "description": "A starter for a blog powered by Gatsby and Markdown",
+  "description": "Blog for learning AI",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
-  },
+  "author": "Srikanth A.",
   "dependencies": {
     "gatsby": "^4.2.0",
     "gatsby-plugin-feed": "^4.2.0",
@@ -35,15 +32,15 @@
   "devDependencies": {
     "prettier": "^2.4.1"
   },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
+  "homepage": "https://forlearningai.com",
   "keywords": [
-    "gatsby"
+    "machine learning", "blog", "python"
   ],
   "license": "0BSD",
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
+    "url": "git+https://github.com/modestkdr/forlearningai.git"
   },
   "scripts": {
     "build": "gatsby build",
@@ -53,5 +50,8 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
-  }
+},
+"engines": {
+    "node": "16.13.0"
+}
 }
