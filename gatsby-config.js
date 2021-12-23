@@ -1,11 +1,11 @@
 module.exports = {
   siteMetadata: {
-    title: `Blog posts on Learning AI`,
+    title: `Assorted Notes on Learning AI`,
     author: {
       name: `Srikanth A.`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      summary: `who is a Developer passionate about Machine Learning and AI.`,
     },
-    description: `A blog on Python and Machine Learning.`,
+    description: `A blog on various aspects of AI: Machine Learning, Python etc.,`,
     siteUrl: `https://forlearningai.com`,
     social: {
       twitter: ``,
