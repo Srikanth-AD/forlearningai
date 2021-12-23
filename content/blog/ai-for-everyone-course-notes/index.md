@@ -10,11 +10,9 @@ This course also sheds light on Ethics and bias in AI."
 [Ref: Coursera - AI for Everyone](https://www.coursera.org/learn/ai-for-everyone/)
 
 **Artificial Intelligence** can be thought of in two categories:
-
-Artificial Narrow Intelligence (ANI)
+- Artificial Narrow Intelligence (ANI)
 Examples: self driving cars, smart speaker, web search
-
-Artificial General Intelligence (AGI)
+- Artificial General Intelligence (AGI)
 Examples: do anything a human can do
 
 ## Supervised Learning
@@ -116,8 +114,7 @@ _Scenario: speech to text translation_
 1. Collect data from various users
 2. Train a model to convert audio signals (Input: A) to detect a keyword such as: 'Alexa' or a phrase such as: 'Hi there'
 3. Deploy the model
- - It may not work well with newly deployed data
- (Ex: British accents that the model hasn't been trained on)
+ - It may not work well with newly deployed data (Ex: British accents that the model hasn't been trained on)
 
 Similarly, for the scenario of self driving cars, the steps would be:
 1. Collect data ( images and relative position of other cars)
@@ -183,5 +180,47 @@ It's important for the initial project to **succeed** rather than deliver the mo
 - Create network effects & platform advantages
  - AI can be an accelerator
 
+Virtuous cycle: a better product results in more users, which in-turn results in more data.
+![AI - product virtuous cycle](./ai-product-virtuous-cycle.png)
 
-Better product <---> more users <--> more data
+### Unsupervised Learning
+
+![Unsupervised learning - classification](./unsupervised-learning-classification.png)
+
+_Scenario: clustering potato chip sales_
+
+Given data, without any specific desired output labels, find something interesting about the data. Unsupervised Learning unlike Supervised Learning doesn't involve inputs (A) with a desired output (B).
+
+### Transfer Learning
+_Scenario: Car detection -> Golf car detection_
+
+Learn from task A and use knowledge to help on task B.
+
+### Reinforced learning
+What's the best way to say, fly a helicopter - given that it's equipped with tools such as: accelerometer, gyroscope etc.,
+Reinforced learning uses a "reward signal" as a training mechanism to automatically help maximize it's rewards.
+
+Other aspects of AI include: Generative Adversarial Network (GAN) to synthesize new images from scratch and Knowledge Graph
+
+### Limitations of AI
+We should have a realistic view of AI and it's possibilities.
+
+**Limitations of AI**
+- Performance limitations
+- Explainability is hard (but sometimes doable)
+- Biased AI outcomes through biased data
+ - AI learning unhealthy stereotypes
+
+**Combating bias**
+- 'zero out' the bias in words
+- Use more inclusive data
+- Transparency and auditing processes
+
+**Adverse use cases**
+- Deep fake
+- Generating fake comments and reviews
+
+### AI & Developing Economies
+- Developing economies should focus on AI & strengthen a country's vertical industries
+- Public / private sector partnerships to accelerate development
+- Invest in education
