@@ -9,6 +9,7 @@
     "gatsby-plugin-feed": "^4.2.0",
     "gatsby-plugin-gatsby-cloud": "^4.2.0",
     "gatsby-plugin-google-analytics": "^4.2.0",
+    "gatsby-plugin-google-gtag": "^4.4.0",
     "gatsby-plugin-image": "^2.2.0",
     "gatsby-plugin-manifest": "^4.2.0",
     "gatsby-plugin-offline": "^5.2.0",
@@ -34,7 +35,9 @@
   },
   "homepage": "https://forlearningai.com",
   "keywords": [
-    "machine learning", "blog", "python"
+    "machine learning",
+    "blog",
+    "python"
   ],
   "license": "0BSD",
   "main": "n/a",
@@ -50,8 +53,8 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
-},
-"engines": {
+  },
+  "engines": {
     "node": "16.13.0"
-}
+  }
 }
