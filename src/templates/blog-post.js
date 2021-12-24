@@ -4,6 +4,7 @@ import { Link, graphql } from "gatsby"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+import { Disqus } from 'gatsby-plugin-disqus';
 
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark
@@ -60,6 +61,13 @@ const BlogPostTemplate = ({ data, location }) => {
           </li>
         </ul>
       </nav>
+      <Disqus
+        config={{
+            url: location.href,
+            identifier: post.id,
+            title: post.frontmatter.title
+        }}
+        />
     </Layout>
   )
 }

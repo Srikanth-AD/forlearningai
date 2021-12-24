@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Assorted Notes on Learning AI`,
+    title: `Notes on Learning AI`,
     author: {
       name: `Srikanth A.`,
       summary: `who is a Developer passionate about Machine Learning and AI.`,
@@ -17,8 +17,14 @@ module.exports = {
       options: {
         id: "GTM-N24CLH4",
         includeInDevelopment: false,
-        enableWebVitalsTracking: true,        
+        enableWebVitalsTracking: true,
       },
+    },
+    {
+        resolve: `gatsby-plugin-disqus`,
+        options: {
+            shortname: `for-learning-ai`
+        }
     },
     `gatsby-plugin-image`,
     {
@@ -59,12 +65,6 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    // {
-    //   resolve: `gatsby-plugin-google-analytics`,
-    //   options: {
-    //     trackingId: `ADD YOUR TRACKING ID HERE`,
-    //   },
-    // },
     {
       resolve: `gatsby-plugin-feed`,
       options: {

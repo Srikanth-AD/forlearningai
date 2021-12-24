@@ -6,6 +6,7 @@
   "author": "Srikanth A.",
   "dependencies": {
     "gatsby": "^4.2.0",
+    "gatsby-plugin-disqus": "^1.2.3",
     "gatsby-plugin-feed": "^4.2.0",
     "gatsby-plugin-gatsby-cloud": "^4.2.0",
     "gatsby-plugin-google-tagmanager": "^4.4.0",
