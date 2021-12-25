@@ -7,7 +7,7 @@ Covers fundamentals of Python, data manipulation, processing and cleanup with Nu
 
 [Ref: Coursera - Introduction to Data Science in Python](https://www.coursera.org/learn/python-data-analysis)
 
-## Python: Types and Sequences
+### Python: Types and Sequences
 
 **Common types**: string, None, int, float, function
 
@@ -20,7 +20,7 @@ type(add_nums) # function
 type((100,200)) # tuple
 ```
 
-### Tuples, Lists, Dictionaries
+#### Tuples, Lists, Dictionaries
 
 **Tuples**: immutable, items are ordered and cannot be changed once created.
 ```python
@@ -51,7 +51,7 @@ while (i != len(sample_list))
 20 in [20,33] # True
 ```
 
-### Slicing
+#### Slicing
 ```python
 sample_string = 'Sample String'
 print(x[:3]) # Sam
@@ -102,9 +102,9 @@ dtnow = dt.datetime.fromtimestamp(tm.time())
 dtnow # datetime.datetime(2021, 10, 10, 10, 10, 50, 50071)
 ```
 
-**Python Objects, map()**
+#### Python Objects, map()
 
-Classes: generally named in camelcase. Class variables can be declared and are shared across all instances.
+**Classes**: generally named in camelcase. Class variables can be declared and are shared across all instances.
 
 Objects in Python don't have private and public methods. Constructors are optional.
 ```python
@@ -129,7 +129,7 @@ lowest = map(min, nums1, nums2)
 lowest # map object
 ```
 
-Another example of lazy evaulation is the ```range()``` function. ```range(3)``` only stores the start, stop, step values and calculates each item when it's needed.
+Another example of lazy evaluation is the ```range()``` function. ```range(3)``` only stores the start, stop, step values and calculates each item when it's needed.
 ```python
  sys.getsizeof(range(5)) # 48
  sys.getsizeof(range(500)) # 48
@@ -151,3 +151,5 @@ sample_list = [i for i in range(0,3) if i % 2 == 0] # [0, 2]
 
 my_list = [i*j for i in range(10) for j in range(10)] # [0, 0, 0, 0, 1, 2, 0, 2, 4]
 ```
+
+### Data Manipulation: Numpy and Regex
