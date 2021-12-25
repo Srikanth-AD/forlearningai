@@ -136,4 +136,18 @@ Another example of lazy evaulation is the ```range()``` function. ```range(3)```
 ```
 ```getsizeof()``` returns the size of an object in bytes.
 
-Other examples of lazy evaluation include: zip, generators and decorators
+Other examples of lazy evaluation include: zip, generators and decorators.
+
+**Lambdas**: Lambdas are anonymous functions. Return of a Lambda is a function reference. Default values aren't allowed for Lambda parameters.
+
+```python
+x = lambda a,b,c : a * b * c
+print (x(1,2,3)) # 6
+```
+
+**List Comprehension**: condensed format. May offer readability and performance benefits.
+```python
+sample_list = [i for i in range(0,3) if i % 2 == 0] # [0, 2]
+
+my_list = [i*j for i in range(10) for j in range(10)] # [0, 0, 0, 0, 1, 2, 0, 2, 4]
+```
