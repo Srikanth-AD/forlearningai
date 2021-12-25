@@ -91,3 +91,49 @@ order_statement = 'Order number: {} has a total of ${}'
 print(order_statement.format(order_details['order_id'], order_details['order_total']))
 # Order number: o123 has a total of $22.20
 ```
+
+**Dates and Times**
+Get current time since the epoch using the ```time``` module.
+```python
+import datetime as dt
+import time as tm
+tm.time() # seconds from epoch
+dtnow = dt.datetime.fromtimestamp(tm.time())
+dtnow # datetime.datetime(2021, 10, 10, 10, 10, 50, 50071)
+```
+
+**Python Objects, map()**
+
+Classes: generally named in camelcase. Class variables can be declared and are shared across all instances.
+
+Objects in Python don't have private and public methods. Constructors are optional.
+```python
+class Person:
+
+    def set_age(self, new_age):
+        self.age = new_age
+
+p1 = Person()
+p1.set_age(22)
+```
+
+```map()``` function takes two parameters: a function that's to be executed and, an iterable to which the function is applied to every item in the iterable. Maps are iterable, just like lists.
+```map()``` returns a map object.
+
+[Lazy evaluation](https://towardsdatascience.com/what-is-lazy-evaluation-in-python-9efb1d3bfed0) is used here. The expression is not immediately evaluated. It is only evaluated when the outcome is needed. This programming design makes it memory and time efficient.
+
+```python
+nums1 = [9, 2, 10]
+nums2 = [7, 8, 2]
+lowest = map(min, nums1, nums2)
+lowest # map object
+```
+
+Another example of lazy evaulation is the ```range()``` function. ```range(3)``` only stores the start, stop, step values and calculates each item when it's needed.
+```python
+ sys.getsizeof(range(5)) # 48
+ sys.getsizeof(range(500)) # 48
+```
+```getsizeof()``` returns the size of an object in bytes.
+
+Other examples of lazy evaluation include: zip, generators and decorators
