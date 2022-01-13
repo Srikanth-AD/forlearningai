@@ -153,3 +153,60 @@ my_list = [i*j for i in range(10) for j in range(10)] # [0, 0, 0, 0, 1, 2, 0, 2,
 ```
 
 ### Data Manipulation: Numpy and Regex
+
+#### Numpy - Array Creation
+One way to create an Array is to pass a list or list of lists as an argument to a numpy array.
+
+```python
+a = np.array([3,4,5])
+print(a.ndim) # Prints number of dimensions of a list
+
+b = np.array([3,4,5], [13,14,15])
+print(b.shape) # Shape - returns a tuple indicating the length of each dimension
+print(b.dtype) # dtype('int64')
+```
+Data within Numpy arrays is homogeneous.  
+
+Some helper functions to create Numpy arrays with initial placeholders.
+```python
+d = np.zeros((2,3)) #2,3 is the shape
+print(d)
+
+e = np.ones((3,3))
+print(e)
+
+f = np.arange(10, 50, 2) # parameters: start, end (exclusive) and step
+```
+
+#### Array Operations
+
+Array operators are applied element-wise.
+
+**Boolean array**: apply an operator on an array and a boolean is returned for any element in the original.
+True is emitted, if the condition is met.
+
+```python
+a = np.array([5, 10, 15])
+b = np.array([1, 2, 3])
+print(a - b) # [4, 8, 12]
+print(a * b)
+
+farenheit = np.array([0, -10, 15])
+celcius = (farenheit - 31) * (5/9)
+celcius%2 == 0 # returns boolean array
+```
+**Matrix manipulation**:
+
+- * is for element-wise comparison
+- @ sign is used for dot product
+
+```python
+a = np.array([[2,2], [0,1]])
+b = np.array([[2,2], [0,1]])
+
+print(a*b)
+print(a@b)
+```
+**Upcasting**: when manipulating arrays of different types, the more general of the two types is used for the resulting array.
+
+#### Indexing, Slicing and Iterating
