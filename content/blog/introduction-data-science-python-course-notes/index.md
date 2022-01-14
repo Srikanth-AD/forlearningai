@@ -254,4 +254,4 @@ b[:, 0:1] # array([[1], [4], [5]])
 Mean for a specific column.
 ```python
 b[:, -1].mean() # 3.666
-```
+``` 
