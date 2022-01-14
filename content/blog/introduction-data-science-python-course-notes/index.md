@@ -197,8 +197,8 @@ celcius%2 == 0 # returns boolean array
 ```
 **Matrix manipulation**:
 
-- * is for element-wise comparison
-- @ sign is used for dot product
+- ```*``` is for element-wise comparison
+- ```@``` sign is used for dot product
 
 ```python
 a = np.array([[2,2], [0,1]])
@@ -210,3 +210,48 @@ print(a@b)
 **Upcasting**: when manipulating arrays of different types, the more general of the two types is used for the resulting array.
 
 #### Indexing, Slicing and Iterating
+
+```python
+a = np.array([[1,4], [4,5], [5,6]])
+print(a) # array([[1, 4],[4, 5],[5, 6]])
+```
+Pluck out specific elements from a n-dimensional array. In the second approach here, two lists get zipped.
+```python
+np.array([a[1,1], a[2,1]  ]) # array([5, 6])
+print(a[ [1, 2], [1,1] ]) # [5 6]
+```
+#### Boolean Indexing
+
+```python
+print(a>1)
+# [[False  True] [ True  True] [ True  True]]
+```
+The above values can be placed as a mask over the original array (boolean masking) to return a 1 dimensional array. Operation used here is broadcasted.
+```python
+print(a[a>2]) # [4 4 5 5 6]
+```
+#### Slicing
+A slice of an array is a view into an array's data. Passing by reference: modifying a sub-array will consequently modify the original array.
+
+```python
+a = np.array([[1,4,2], [4,5,2], [5,6,7]])
+a[:2] # returns first rows
+a[:2, 1:3] # [[4 2] [5 2]]
+sub_a = a[:2, 1:3] # [[4 2] [5 2]]
+sub_a[0,0] = 99
+print(sub_a) # [[99  2] [ 5  2]]
+print(a) # [[ 1 99  2] [ 4  5  2] [ 5  6  7]]
+```
+**Numpy**: fetching a column of data as a list versus persevering the general shape of their own rows. This example illustrates how the shape of data is just an abstraction which can be layered on top of data as needed.
+
+```python
+b = np.array([[1,4,2], [4,5,2], [5,6,7]])
+b[:, 0] # array([1, 4, 5])
+b[:, 0:1] # array([[1], [4], [5]])
+```
+**Basic statistics:**
+
+Mean for a specific column.
+```python
+b[:, -1].mean() # 3.666
+```
