@@ -1,8 +1,7 @@
 ---
 title: AI for Everyone - Course Notes
 date: "2021-12-22T12:12:03.284Z"
-description: "AI for Everyone Coursera course notes.
-Covers AI terminology at a high-level along with topics such as how to structure
+description: "Covers AI terminology at a high-level along with topics such as how to structure
 Machine Learning projects and create an AI culture within an organization.
 This course also sheds light on Ethics and bias in AI."
 ---
