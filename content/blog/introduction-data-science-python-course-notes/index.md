@@ -1,7 +1,7 @@
 ---
-title: Introduction to Data Science in Python - Course Notes
+title: Introduction to Data Science in Python: Week 1 - Course Notes
 date: "2021-12-24T13:12:03.284Z"
-description: "Introduction to Data Science in Python - course notes.
+description: "Introduction to Data Science in Python Week 1 course notes.
 Covers fundamentals of Python, data manipulation, processing and cleanup with Numpy and Pandas."
 ---
 
@@ -254,4 +254,61 @@ b[:, 0:1] # array([[1], [4], [5]])
 Mean for a specific column.
 ```python
 b[:, -1].mean() # 3.666
-``` 
+```
+
+### Manipulating Text with Regex
+**re.match()** checks for a string match at the beginning of a string and returns a boolean.
+
+**re.search()** checks for a string match anywhere in the string and returns a boolean.
+
+**re.findall()**  find all occurrences of a given pattern in a string
+
+**re.split()**  splits a string into a list of substrings, based on a given pattern
+
+```python
+import re
+text = "does world exist in hello world"
+if re.search('world', text):
+    print('yes') # prints yes
+else:
+    print('no')
+```
+
+```python
+text = "Ms Jane is a student. Jane is a composer"
+print(re.match('Jane', text)) # None
+re.findall('Jane', text) # ['Jane', 'Jane']
+```
+
+#### Regex API
+**Anchors**: specify the start and/or the end of a string that you're trying to match.
+ Caret character ^ indicates start and the dollar sign character indicates end.
+
+ ```python
+ text = "Jane is a student. Jane is a composer"
+ re.search('^Jane', text) # <re.Match object span(0,3) match='Jane'>
+ ```
+**Set operator**
+Find the number of occurrences of A or B in a string.
+```python
+text = "ABABCB"
+re.findall('[AB]', text) # ['A', 'B', 'A', 'B', 'B']
+```
+Find all instances where A is followed by B or C
+```python
+text = "ACBABCB"
+re.findall('[A][B-C]', text) # ['AC', 'AB']
+```
+Match any value at the beginning of a string which is not an A.
+```python
+re.findall('^[^A]', text) # []
+```
+
+**Quantifiers**: are the number of times a pattern is to be matched in order to count as a match. e(m, n): expression where m, n represent the minimum and maximum number of times the item could be matched.
+```python
+text = "ACBAABCBAAA"
+re.findall('A{2,4}', text) # ['AA', 'AAA']
+
+# Here 2 represents min and max of the expression
+re.findall('A{2}', text) # ['AA', 'AA']
+```
