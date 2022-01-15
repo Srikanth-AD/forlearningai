@@ -1,8 +1,8 @@
 ---
-title: Introduction to Data Science in Python: Week 1 - Course Notes
+title: Introduction to Data Science in Python - Week 1 Course Notes
 date: "2021-12-24T13:12:03.284Z"
 description: "Introduction to Data Science in Python Week 1 course notes.
-Covers fundamentals of Python, data manipulation, processing and cleanup with Numpy and Pandas."
+Covers Python fundamentals, data manipulation with Numpy and regular expressions."
 ---
 
 [Ref: Coursera - Introduction to Data Science in Python](https://www.coursera.org/learn/python-data-analysis)
@@ -312,3 +312,6 @@ re.findall('A{2,4}', text) # ['AA', 'AAA']
 # Here 2 represents min and max of the expression
 re.findall('A{2}', text) # ['AA', 'AA']
 ```
+**Meta characters**
+- \w special pattern: any letter or digit
+- \s any whitespace character
