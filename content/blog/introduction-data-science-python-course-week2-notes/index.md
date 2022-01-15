@@ -32,6 +32,7 @@ pd.Series(nums)
 # 1    11
 # 2    99
 # dtype: int64
+```
 
 ```python
 letters = ['Z', 'X', None]
@@ -102,6 +103,46 @@ s
 # dtype: float64
 ```
 ### Quering a Series
+A Pandas series can be queried either by an index position or an index label.
+- ```iloc``` attribute can be used to query by a numeric location.
+- ```loc``` attribute can be used to query by an index label.
+
+Note that ```iloc``` and ```loc``` are attributes and not methods.
+
+Iterating through a Pandas Series to obtain total sum.
+```python
+nums_series = pd.Series([10, 20, 30])
+total = 0
+for num in nums_series:
+    total += num
+total # 60
+```
+
+Using numpy to find the total sum of a Series.
+```python
+num_series = pd.Series([10, 20, 30])
+np.sum(num_series) #60.0
+```
+To evaluate the performance difference between using a basic for loop versus using numpy's builtin methods, the ```timeit``` magic method can be used.
+
+```python
+%%timeit -n 100
+rand_nums = pd.Series(np.random.randint(0, 1000, 10000))
+total = 0
+for num in rand_nums:
+    total += num
+total/len(rand_nums)
+# 1.25 ms ± 6.44 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+```
+
+```python
+%%timeit -n 100
+rand_nums = pd.Series(np.random.randint(0, 1000, 10000))
+# generate: 10K random nums between 0 and 1000
+total = np.sum(rand_nums)
+total / len(rand_nums) # average
+# 229 µs ± 16.7 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+```
 
 ### DataFrame Data Structure
 
