@@ -1,8 +1,7 @@
 ---
 title: Introduction to Data Science in Python - Week 1 Course Notes
 date: "2021-12-24T13:12:03.284Z"
-description: "Introduction to Data Science in Python Week 1 course notes.
-Covers Python fundamentals, data manipulation with Numpy and regular expressions."
+description: "Covers Python fundamentals, data manipulation with Numpy and regular expressions."
 ---
 
 [Ref: Coursera - Introduction to Data Science in Python](https://www.coursera.org/learn/python-data-analysis)
