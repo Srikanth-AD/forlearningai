@@ -144,6 +144,74 @@ total / len(rand_nums) # average
 # 229 µs ± 16.7 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
 ```
 
+#### Broadcasting
+Broadcasting can be used to apply an operation to every value in a given series thereby changing the series.
+
+Per example below: the rudimentary implementation using  ```iteritems()```  can be replaced by leveraging broadcasting.
+
+```python
+s = pd.Series([9, 7, 6])
+for label, value in s.iteritems():
+    s.set_value(label, value+3)
+s
+# 0    12
+# 1    10
+# 2     9
+# dtype: int64
+```
+
+```python
+s = pd.Series([9, 7, 6])
+s += 2
+s
+# 0    11
+# 1     9
+# 2     8
+# dtype: int64
+```
+
+Pandas Series can consist of data values and index labels with mixed types.
+```python
+s = pd.Series([9, 7, 6])
+s.loc['Name'] = 'Jade'
+s
+# 0          9
+# 1          7
+# 2          6
+# Name    Jade
+# dtype: object
+```
+
+**Append** one series to another returns a new series and doesn't modify the existing series.
+
+```python
+good_grades = pd.Series({'A': 1, 'B': 2})
+low_grades = pd.Series([3,3,4,4], index=['C', 'C', 'D', 'D'])
+all_grades = good_grades.append(low_grades)
+all_grades
+# A    1
+# B    2
+# C    3
+# C    3
+# D    4
+# D    4
+# dtype: int64
+```
+
+As the index label 'C' corresponds to multiple values, a series is returned here.
+
+```python
+all_grades['C']
+# C    3
+# C    3
+# dtype: int64
+```
+
+```python
+type(all_grades['C'])
+# pandas.core.series.Series
+```
+
 ### DataFrame Data Structure
 
 ### DataFrame Indexing and Loading
