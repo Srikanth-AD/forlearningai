@@ -147,7 +147,7 @@ total / len(rand_nums) # average
 #### Broadcasting
 Broadcasting can be used to apply an operation to every value in a given series thereby changing the series.
 
-Per example below: the rudimentary implementation using  ```iteritems()```  can be replaced by leveraging broadcasting.
+Per example below: the rudimentary implementation using  ```iteritems()``` can be replaced by leveraging broadcasting.
 
 ```python
 s = pd.Series([9, 7, 6])
@@ -170,7 +170,7 @@ s
 # dtype: int64
 ```
 
-Pandas Series can consist of data values and index labels with mixed types.
+Pandas Series can consist of data values and index labels with **mixed types**.
 ```python
 s = pd.Series([9, 7, 6])
 s.loc['Name'] = 'Jade'
@@ -182,7 +182,7 @@ s
 # dtype: object
 ```
 
-**Append** one series to another returns a new series and doesn't modify the existing series.
+**Appending** one series to another returns a new series and doesn't modify the existing series.
 
 ```python
 good_grades = pd.Series({'A': 1, 'B': 2})
@@ -213,6 +213,160 @@ type(all_grades['C'])
 ```
 
 ### DataFrame Data Structure
+A DataFrame is conceptually a two dimensional series object with an index and multiple columns of content with each column has a label.  A DataFrame can be thought of as a two axes labeled array.
+
+Creating a DF using a group of series. Here, each series represents a row of data.
+
+```python
+city1_weather = pd.Series({'Sunday': 30.2, 'Monday': 24, 'Tuesday': 30.8})
+city2_weather = pd.Series({'Sunday': 24.1, 'Monday': 26, 'Tuesday': 26.3})
+
+df = pd.DataFrame([city1_weather, city2_weather], index=['city1', 'city2'])
+df.head()
+```
+|           | Sunday | Monday     | Tuesday |
+| :-------- | :--------- | :-------| ----: |  
+| city1     | 30.2       | 24.0    | 30.8  |
+| city2     | 24.1       | 24.0    | 30.8  |
+
+
+Creating a DF using a list of dictionaries. Each dictionary represents a row of data.
+```python
+weather_data = [{'Sunday': 30.2, 'Monday': 24, 'Tuesday': 30.8, 'Week': 1},
+               {'Sunday': 26.2, 'Monday': 23.8, 'Tuesday': 28, 'Week': 1},
+               {'Sunday': 26.2, 'Monday': 23.8, 'Tuesday': 28, 'Week': 2}]
+
+df = pd.DataFrame(weather_data, index=['city1', 'city2', 'city1'])
+df
+```
+|           | Sunday    |	Monday |	Tuesday |	Week |
+| :-------- | :-------- |   :------|  :-------  |   ----:|
+| city1     | 30.2      |	24.0   |     30.8	|   1    |
+| city2	    | 26.2      |	23.8   |	 28.0	|   1    |
+| city1	    | 26.2      |	23.8   |	 28.0	|   2    |
+
+Extract data using ```.iloc``` and ```.loc``` attributes,
+Similar to Series, as a DataFrame is two dimensional: passing a single value to the ```loc``` operator will return the **Series** if there's only one row to return
+
+```python
+df.loc['city2']
+# Sunday     26.2
+# Monday     23.8
+# Tuesday    28.0
+# Week        1.0
+# Name: city2, dtype: float64
+```
+**Note**: name of the series is returned as the index value, column name is also included in the output.
+
+```python
+type(df.loc['city2']) # pandas.core.series.Series
+```
+
+**Note**: indices and column names along either axes horizontal or vertical can be non-unique
+
+As the following statement matches multiple rows, a new DataFrame is returned.
+```python
+df.loc['city1']
+```
+|           | Sunday    |	Monday |	Tuesday |	Week |
+| :-------- | :-------- |   :------|  :-------  |   ----:|
+| city1     | 30.2      |	24.0   |     30.8	|   1    |
+| city1	    | 26.2      |	23.8   |	 28.0	|   2    |
+
+```python
+type(df.loc['city1']) # pandas.core.frame.DataFrame
+```
+
+Data based on multiple axes can be selected with parameters to ```.loc``` operator. One for the row index and the other for the column name.
+```python
+df.loc['city1', 'Sunday']
+# city1    30.2
+# city1    26.2
+# Name: Sunday, dtype: float64
+```
+
+Transposing a dataframe pivots all of the rows into columns and all columns into rows
+```python
+df.T
+```
+|           | city1 |	city2 |	city1 |
+| :-------- | :---- | :------|   ----:|
+| Sunday	| 30.2	| 26.2   |	26.2 |
+| Monday	| 24.0	| 23.8   |	23.8 |
+| Tuesday	| 30.8	| 28.0   |	28.0 |
+| Week	    | 1.0	| 1.0    |	2.0  |
+
+Below are two approaches to fetch a column's data.
+```python
+df.T.loc['Sunday']
+# city1    30.2
+# city2    26.2
+# city1    26.2
+# Name: Sunday, dtype: float64
+```
+
+This is similar to column projection in relational databases. The result of a single column projection is a Series object
+```python
+df['Sunday']
+# city1    30.2
+# city2    26.2
+# city1    26.2
+# Name: Sunday, dtype: float64
+```
+
+Operations can be chained together in both DataFrames and Series. For instance, fetch all rows pertaining to city1 and project a specific column name from just these rows.
+```python
+df.loc['city1']['Sunday']
+# city1    30.2
+# city1    26.2
+# Name: Sunday, dtype: float64
+```
+
+```python
+type(df.loc['city1']) # pandas.core.frame.DataFrame
+type(df.loc['city1']['Sunday']) # pandas.core.series.Series
+```
+
+For ```.loc``` parameter a ```:``` can be passed as the first paramter (rows) to indicate a full slice of rows
+```python
+df.loc[:, ['Sunday', 'Tuesday']]
+```
+|       | Sunday	| Tuesday |
+| :---  | :-------- | ----:   |
+| city1  |	30.2    |	30.8  |
+| city2  |	26.2    |	28.0  |
+| city1  |	26.2    |	28.0  |
+
+**Dropping data**: **drop()** function doesn't change the original data but, returns a copy of the DataFrame with given rows removed. Default is the row axis or 0.
+```python
+df.drop('city2')
+```
+
+|       | Sunday  |	Monday | Tuesday  |	Week   |
+| :---- | :----   | :---  | :-------- | ----:  |
+city1	| 30.2	  | 24.0  |	30.8      |	1 |
+city1	| 26.2	  | 23.8  |	28.0      |	2 |
+
+To drop a column, axis parameter can be set to a value of 1
+```python
+df.drop('Sunday', axis=1)
+```
+|       | Monday  |	Tuesday	| Week |
+| :---- | :----   | :---  | :----: |
+city1   |	24.0  |	30.8 |	     1 |
+city2   |	23.8  |	28.0 |	     1 |
+city1   |	23.8  |	28.0 |	     2 |
+
+Using broadcasting, a default value can be set for a new column and this takes immediate effect.
+```python
+df['DefaultWeather'] = 15
+df
+```
+|       | Sunday  | Monday	  | Tuesday	| DefaultWeather |
+| :---- | :-----  | :-------- | :----   | ---: |
+| city1 |	30.2  |	24.0      |	30.8    | 15 |
+| city2	| 26.2	  | 23.8	  | 28.0	| 15 |
+| city1 |	26.2  |	23.8      |	28.0    | 15 |
 
 ### DataFrame Indexing and Loading
 
