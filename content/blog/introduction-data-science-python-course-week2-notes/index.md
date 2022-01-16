@@ -327,7 +327,7 @@ type(df.loc['city1']) # pandas.core.frame.DataFrame
 type(df.loc['city1']['Sunday']) # pandas.core.series.Series
 ```
 
-For ```.loc``` parameter a ```:``` can be passed as the first paramter (rows) to indicate a full slice of rows
+For ```.loc``` parameter a ```:``` can be passed as the first parameter (rows) to indicate a full slice of rows
 ```python
 df.loc[:, ['Sunday', 'Tuesday']]
 ```
@@ -369,6 +369,42 @@ df
 | city1 |	26.2  |	23.8      |	28.0    | 15 |
 
 ### DataFrame Indexing and Loading
+
+Read a CSV file using Pandas into a DataFrame.
+```python
+import pandas as pd
+df = pd.read_csv('sales.csv')
+df.head()
+```
+
+![load sample data into a dataframe from a csv file](./load-sample-data-into-dataframe-from-csv.png)
+
+```rename()``` function can be used to rename columns in a DataFrame.
+```python
+new_df = df.rename(columns={
+    'Item Name': 'Product Name',
+    'Store Number': 'Store #',
+    'Sales Feb': 'Sales'})
+new_df.head()
+```
+![rename dataframe columns](./rename-dataframe-columns.png)
+
+The ```rename()``` method can also be passed with a ```mapper``` parameter: which is a function definition that can be applied to respective columns or rows - specified via ```axis``` parameter (1 indicates columns, 0 indicates rows).
+
+```python
+new_df = new_df.rename(mapper=str.lower, axis=1)
+new_df.head()
+```
+![rename dataframe columns with rename function](./rename-dataframe-columns-with-rename-function.png)
+
+Using **list comprehension**, a function can be applied across column names to change the naming format from lower to uppercase for instance.
+```python
+cols = list(new_df.columns) # convert indexing variable to a list
+cols = [x.upper().strip() for x in cols] # list comprehension
+new_df.columns = cols
+new_df.head()
+```
+![apply list comprehension for dataframe column names](./apply-list-comprehension-for-dataframe-column-names.png)
 
 ### Querying a DataFrame
 
